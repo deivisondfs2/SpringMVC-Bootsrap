@@ -9,6 +9,7 @@
 	<form:form action="/atividades/add" method="POST" modelAttribute="atividade">
 		<p><font color="red">${errorMessage}</font></p>
 		
+		<form:input type="hidden" path="id"></form:input>
 		<form:input type="hidden" value="${name}" path="user"></form:input>
 				
 		<div class="form-group">

@@ -45,13 +45,18 @@ public class AtividadeController {
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addAtividade(ModelMap map, @RequestParam String user, @Valid Atividade atividade, BindingResult bindingResult){
-		atividade = new Atividade(atividadeService.getListaAtividades().size() + 1, user, atividade.getDescricao(), new DateTime(), false);
+		
 		
 		if (bindingResult.hasErrors()) {			
 			return "atividade-add";
 		}
-		
-		atividadeService.addListaAtividade(atividade);
+		if (ObjectUtils.notEqual(atividade.getId(), 0)) {
+			atividade = new Atividade(atividade.getId(), user, atividade.getDescricao(), new DateTime(), false);
+			atividadeService.atualizarAtividade(atividade);
+		}else{
+			atividade = new Atividade(atividadeService.getListaAtividades().size() + 1, user, atividade.getDescricao(), new DateTime(), false);
+			atividadeService.addListaAtividade(atividade);
+		}
 		LOGGER.debug("Post add new atividade");
 		map.clear();
 		
@@ -67,6 +72,14 @@ public class AtividadeController {
 		
 		map.clear();
 		return "redirect:/atividades";
+	}
+	
+	@RequestMapping(value = "/{id}/atualizar", method = RequestMethod.GET)
+	public String atualizarAtividade(ModelMap modelMap ,@PathVariable("id") int id){
+		Atividade atividade = atividadeService.buscarAtividade(id);
+		modelMap.addAttribute("atividade", atividade);		
+		
+		return "atividade-add";
 	}
 	
 }

@@ -41,6 +41,21 @@ public class AtividadeService {
 		
 	}
 	
+	public Atividade buscarAtividade(int id){
+		Atividade retorno = new Atividade();
+		for (Atividade atividade : listaAtividades) {
+			if (atividade.getId() == id) 
+				retorno = atividade;
+		}
+		return retorno;
+	}
+	
+	
+	public void atualizarAtividade(Atividade atividade){
+		listaAtividades.remove(atividade);
+		addListaAtividade(atividade);
+	}
+	
 	
 	public static List<Atividade> getListaAtividades() {
 		return listaAtividades;

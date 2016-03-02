@@ -77,10 +77,7 @@ public class Atividade {
 			equals = true;
 		} else if (obj instanceof Atividade) {
 			Atividade object = (Atividade) obj;
-			equals = new EqualsBuilder().append(id, object.id)
-					.append(user, object.user)
-					.append(descricao, object.descricao)
-					.append(data, object.data).append(isDone, object.isDone)
+			equals = new EqualsBuilder().append(id, object.id)						
 					.isEquals();
 		}
 		return equals;
@@ -88,8 +85,7 @@ public class Atividade {
 
 	@Override
 	public int hashCode() {
-		return new HashCodeBuilder().append(id).append(user).append(descricao)
-				.append(data).append(isDone).toHashCode();
+		return new HashCodeBuilder().append(id).toHashCode();
 	}
 
 	@Override

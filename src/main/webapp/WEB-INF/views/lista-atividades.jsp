@@ -28,6 +28,7 @@
 					<td>${atividade.descricao}</td>
 					<td>${atividade.data}</td>
 					<td>${atividade.done}</td>
+					<td><a class="btn btn-success" href="/atividades/${atividade.id}/atualizar">Atualizar</a></td>
 					<td><a class="btn btn-danger" href="/atividades/${atividade.id}/remover">Deletar</a></td>
 				</tr>
 			</c:forEach>
