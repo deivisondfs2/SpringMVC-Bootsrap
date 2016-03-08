@@ -6,7 +6,7 @@
 	<h2>Olá ${name}</h2>
 	<br />
 	<div>
-		<a class="btn btn-success" href="/atividades/add">Nova atividade</a>
+		<a class="btn btn-success" href="/atividades/add"><spring:message code="btn" /></a>
 	</div>
 	<br /> Segue sua lista de atividades:
 	<br />

@@ -1,5 +1,5 @@
 <%@ page session="true" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 
 <%@ include file="head.jspf"  %>
 

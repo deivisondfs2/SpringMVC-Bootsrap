@@ -3,6 +3,7 @@ package br.com.deivisondfs2.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.apache.commons.lang3.ObjectUtils;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -115,6 +117,12 @@ public class AtividadeController {
         return principal.toString();
     }
 	
-	
+	/*
+	@ExceptionHandler
+	private String exceptionEspecificaDaClasse(HttpServletRequest request, Exception exception){
+		LOGGER.error("Request: " + request.getRequestURL() + " exception: " + exception.getMessage());
+		return "error";
+	}
+	*/
 	
 }
