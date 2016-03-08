@@ -22,14 +22,15 @@
 		<commons-fileupload-version>1.2.1</commons-fileupload-version>
 		<commons-codec-version>1.9</commons-codec-version>
 
-		<joda-time.version>2.3</joda-time.version>
-
 		<jstl-version>1.2</jstl-version>
 		<hsqldb.version>2.3.2</hsqldb.version>
 		<bootstrap-version>3.3.6</bootstrap-version>
+		<datepicker-version>1.0.1</datepicker-version>
 		<jquery-version>2.1.4</jquery-version>
 		<hibernate-validator-version>5.2.2.Final</hibernate-validator-version>
-		
+
+		<spring-security-web-version>4.0.1.RELEASE</spring-security-web-version>
+		<spring-security-config-version>4.0.1.RELEASE</spring-security-config-version>
 	</properties>
 
 
@@ -40,6 +41,7 @@
 			<version>6.0</version>
 			<scope>provided</scope>
 		</dependency>
+
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -61,6 +63,18 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring-security-web-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring-security-config-version}</version>
+		</dependency>
+
+		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>${log4j-version}</version>
@@ -70,6 +84,12 @@
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
 			<version>${bootstrap-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap-datepicker</artifactId>
+			<version>${datepicker-version}</version>
 		</dependency>
 
 		<dependency>
@@ -104,12 +124,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- Joda Time -->
-		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>${joda-time.version}</version>
-		</dependency>
+
 
 	</dependencies>
 

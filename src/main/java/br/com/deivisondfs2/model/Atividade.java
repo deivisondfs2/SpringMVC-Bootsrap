@@ -1,26 +1,26 @@
 package br.com.deivisondfs2.model;
 
+import java.util.Date;
+
 import javax.validation.constraints.Size;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.joda.time.DateTime;
 
 public class Atividade {
 
 	private int id;
 	private String user;
-	
-	@Size(min = 8, message = "O campo deve ter no min 8 caracteres!")
+	@Size(min = 10, message = "Minimo 10 caracteres.")
 	private String descricao;
-	private DateTime data;
+	private Date data;
 	private boolean isDone;
 
 	public Atividade() {
 	
 	}
 	
-	public Atividade(int id, String user, String descricao, DateTime data,
+	public Atividade(int id, String user, String descricao, Date data,
 			boolean isDone) {
 
 		this.id = id;
@@ -54,11 +54,11 @@ public class Atividade {
 		this.descricao = descricao;
 	}
 
-	public DateTime getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(DateTime data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 

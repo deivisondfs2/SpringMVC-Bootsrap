@@ -1,10 +1,10 @@
 package br.com.deivisondfs2.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;
 
 import br.com.deivisondfs2.model.Atividade;
@@ -19,9 +19,9 @@ public class AtividadeService {
 	}
 	
 	private void montarListaAtividades(){
-		listaAtividades.add(new Atividade(1, "deivisondfs2", "alguma Descrição", new DateTime(), false));
-		listaAtividades.add(new Atividade(2, "deivisondfs2", "Olá descrição 2 tudo bem?", new DateTime(), false));
-		listaAtividades.add(new Atividade(3, "deivisondfs2", "vixe mais uma...", new DateTime(), false));
+		listaAtividades.add(new Atividade(1, "deivisondfs2", "alguma Descrição", new Date(), false));
+		listaAtividades.add(new Atividade(2, "deivisondfs2", "Olá descrição 2 tudo bem?", new Date(), false));
+		listaAtividades.add(new Atividade(3, "deivisondfs2", "vixe mais uma...", new Date(), false));
 	}
 	
 	

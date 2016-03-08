@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.deivisondfs2.service.UserService;
+import br.com.deivisondfs2.validation.LoginServiceValidation;
 
 @WebServlet(urlPatterns = "/login.do")
 public class LoginServlet extends HttpServlet {
 
-	UserService validationService = new UserService();
+	LoginServiceValidation validationService = new LoginServiceValidation();
 	
 	String parameter = "";
 	

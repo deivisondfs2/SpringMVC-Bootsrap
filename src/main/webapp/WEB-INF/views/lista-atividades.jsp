@@ -1,5 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:import url="head.jsp"></c:import>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+<%@ include file="head.jspf"  %>
 
 	<h2>Olá ${name}</h2>
 	<br />
@@ -26,7 +28,11 @@
 					<td>${atividade.id}</td>
 					<td>${atividade.user}</td>
 					<td>${atividade.descricao}</td>
-					<td>${atividade.data}</td>
+					<td>
+						<fmt:formatDate value="${atividade.data}" pattern="dd/MM/yyyy"/>
+						
+						
+					</td>
 					<td>${atividade.done}</td>
 					<td><a class="btn btn-success" href="/atividades/${atividade.id}/atualizar">Atualizar</a></td>
 					<td><a class="btn btn-danger" href="/atividades/${atividade.id}/remover">Deletar</a></td>
@@ -38,4 +44,4 @@
 
 	${atividades}
 	
-<c:import url="footer.jsp"></c:import>
+<%@ include file="footer.jspf" %>

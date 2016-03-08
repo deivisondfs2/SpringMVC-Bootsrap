@@ -1,8 +1,7 @@
 <%@ page session="true" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<c:import url="head.jsp"></c:import>
+<%@ include file="head.jspf"  %>
 
 	<h2>Adicionando nova atividade</h2>
 
@@ -18,10 +17,16 @@
 			<form:errors path="descricao" class="text-warning"></form:errors>
 		</div>
 		
+		<div class="form-group">
+			<form:label path="data" for="exampleInputUsuario">Data</form:label> 
+			<form:input class="form-control" rows="3" path="data" required="required"></form:input>
+			<form:errors path="data" class="text-warning"></form:errors>
+		</div>
+		
 		<input type="submit" class="btn btn-sucess" value="Enviar"/>
 		
 		
 	</form:form>
 
 	
-<c:import url="footer.jsp"></c:import>
+<%@ include file="footer.jspf" %>

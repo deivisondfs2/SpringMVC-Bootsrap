@@ -1,14 +1,21 @@
 package br.com.deivisondfs2.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.validation.Valid;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.log4j.Logger;
-import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +24,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import br.com.deivisondfs2.model.Atividade;
 import br.com.deivisondfs2.service.AtividadeService;
+import br.com.deivisondfs2.validation.AtividadeValidation;
 
 @Controller
 @RequestMapping(value = "/atividades")
@@ -29,6 +37,20 @@ public class AtividadeController {
 	
 	@Autowired
 	AtividadeService atividadeService;
+	
+	@Autowired
+	AtividadeValidation atividadeValidation;
+	
+	
+	@InitBinder
+    protected void initBinder(WebDataBinder binder) {
+		
+		SimpleDateFormat dateDisplayFormat = new SimpleDateFormat("dd/MM/yyyy"); 
+		
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(
+        		dateDisplayFormat.getDateInstance(), false));
+    }
+	
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String listaAtividades(ModelMap map){
@@ -51,10 +73,10 @@ public class AtividadeController {
 			return "atividade-add";
 		}
 		if (ObjectUtils.notEqual(atividade.getId(), 0)) {
-			atividade = new Atividade(atividade.getId(), user, atividade.getDescricao(), new DateTime(), false);
+			atividade = new Atividade(atividade.getId(), getLoggedInUserName(), atividade.getDescricao(), atividade.getData(), false);
 			atividadeService.atualizarAtividade(atividade);
 		}else{
-			atividade = new Atividade(atividadeService.getListaAtividades().size() + 1, user, atividade.getDescricao(), new DateTime(), false);
+			atividade = new Atividade(atividadeService.getListaAtividades().size() + 1, getLoggedInUserName(), atividade.getDescricao(), atividade.getData(), false);
 			atividadeService.addListaAtividade(atividade);
 		}
 		LOGGER.debug("Post add new atividade");
@@ -81,5 +103,18 @@ public class AtividadeController {
 		
 		return "atividade-add";
 	}
+	
+	
+	private String getLoggedInUserName() {
+        Object principal = SecurityContextHolder.getContext()
+                .getAuthentication().getPrincipal();
+
+        if (principal instanceof UserDetails)
+            return ((UserDetails) principal).getUsername();
+
+        return principal.toString();
+    }
+	
+	
 	
 }
